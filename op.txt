@@ -1,0 +1,88 @@
+Hey,
+
+I know there is a few of you more knowledgeable people here that regularly go to sites like HWVS and scan and build a computer for someone by putting the items into your basket and then at the end take a screen shot of it or spend your valuable time converting that basket into a nice bb-coded post for the user that made the request. 
+
+So I thought maybe I could make it a little easier for you :) I don't know has someone done this before, or if you all, already have your own tools for this kind of thing, but I'm gonna post it in the off chance it might help someone.
+I wrote a JavaScript that takes all the items from your basket and puts them into bb-codes so you can just copy and paste the text into your post in these forums. It should hopefully save people time when building a machine for a user.
+
+Here is the script.
+[PHP]JavaScript:var debug = false;function loadScript( url ){if ( document.getElementById("basket_parser") == null ){var script = document.createElement( "script" );script.setAttribute( "id", "basket_parser" );script.setAttribute( "type", "text/javascript" );script.setAttribute( "src", url + "?" + Math.random() * 10000000 );document.getElementsByTagName( "head" )[0].appendChild( script );setTimeout( "loadScript('" + url + "')", 200 );log( "Started loading script: " + url );}else if ( typeof( init_script ) != 'undefined' ){log( "Loaded." );init_script();}else{setTimeout( "loadScript('" + url + "')", 200 );log( "loading ..." );}}function log (string){if ( debug ){document.body.appendChild( document.createTextNode( string ) );document.body.appendChild( document.createElement( "br" ) );}}loadScript( "http://fluffy88.com/scripts/basket_parser.js" );void( 0 );[/PHP]
+I hope this will come in helpful to all the users of this forum, masters and noobs alike.
+At the moment it only works with 
+[URL]http://hardwareversand.de/[/URL]
+[URL]http://www.scan.co.uk/[/URL]
+[url]http://www.dabs.ie/[/url]
+[url]http://www.memoryc.com/[/url]
+[url]http://www.newegg.com/[/url]
+[url]http://www.amazon.co.uk[/url]
+[url]http://www.overclockers.co.uk[/url]
+but if people find it useful I will extend it for use with any other website that is requested.
+Sites I plan to add to the above list (at some stage),
+[url]http://www.komplett.ie/[/url]
+
+And any ideas on how to make the script better are appreciated.
+
+To use this script you will have to create a bookmark for the script,
+This varys from browser to browser, so I am just going to cover firefox 10.x now, if needed I can do others by request.
+[LIST=1]
+[*]Create a new bookmark
+[LIST=1]
+[*]I recommend using the bookmark bar
+[*]Right click on the bookmark bar
+[*]Select "New Bookmark..."
+[*]In the popup window paste the script into the "Location:" section.
+[*]Give the bookmark any relevant name perhaps, "Basket parser"
+[*]Click "Add"
+[/LIST]
+ 
+[*]When you have the script as a bookmark
+[*]Visit the site you want to use the script on
+[*]Then click the bookmark to run it.
+[/LIST]
+
+Sorry I am very poor at explaining things, but if people want to use this and need help just ask, I will do guides with screen shots if it would be simpler to follow.
+
+
+
+[u]Now for the complicated bits[/u]
+From here on I am going to try and explain the more advanced/complicated features of this script. For most uses the script posted above will work perfectly and you will have no need to read the below section to use the script. If you however want to change the formatting of the script to suit your own personal style or to adhere to some other format for use on another forum/site then read on.
+
+Script with editable formatting options.
+[php]JavaScript:var before = '[TABLE][B]Item[/B]|[B]Price[/B]';var format = '{itm_quantity}[URL="{itm_url}"]{itm_name}[/URL]|{itm_price}';var after = 'Shipping|{shipping}\n[B]Total[/B]|[B]{total}[/B][/TABLE]';function loadScript(url) {if (document.getElementById("basket_parser") == null) {var script = document.createElement("script");script.setAttribute("id", "basket_parser");script.setAttribute("type", "text/javascript");script.setAttribute("src", url + "?" + Math.pow(new Date().getMonth(), 2) + Math.pow(new Date().getDate(), 3));document.getElementsByTagName("head")[0].appendChild(script);setTimeout("loadScript('" + url + "')", 200);} else if (typeof(init_script) != 'undefined') {init_script();} else {setTimeout("loadScript('" + url + "')", 200);}}loadScript("http://fluffy88.com/scripts/basket_parser.js");void(0);[/php]
+In this script you will see three variables at the beginning(just after "JavaScript:") called [i]before[/i], [i]format[/i] and [I]after[/I] this is what you use to edit the format of the output. It uses 'tags' that get swapped with the information(price, name ...) of the items in your basket.
+
+First I will explain the main [i]format[/i] variable.
+Atm there is 4 tags,
+[LIST=1]
+[*]{itm_url}        -    This will get replaced by the full url of the item. Example: [URL]http://www.scan.co.uk/products/corsair-600t-graphite-series-black-mid-tower-gaming-case-w-o-psu[/URL]
+[*]{itm_name}        -    This will get replaced by the full name of the item that is displayed in the basket. Example: Intel Core i5-2500K Box, LGA1155
+[*]{itm_price}        -    This will get replaced by the price of the item that is displayed in the basket. Example: €44.09, £172.94
+[*]{itm_quantity}    -    This will get replaced by the quantity of the item that is displayed in the basket if it is greater than 1. Example: 2 x , 5 x. It might be helpful to note, {itm_quantity} gets replaced with a trailing space, "2 x "
+[/LIST]
+To change how the output is formatted all we have to do is change this variable and place the 'tags' in between what ever text is needed for your post.
+Some example formats are
+[PHP]var format = '{itm_quantity}[URL="{itm_url}"]{itm_name}[/URL] {itm_price}';[/PHP]
+A HTML version of this would be
+[PHP]var format = '{itm_quantity}<a href="{itm_url}">{itm_name}</a> {itm_price}';[/PHP]
+A tabled version
+[PHP]var format = '[TABLE]{itm_quantity}|[URL="{itm_url}"]{itm_name}[/URL]|{itm_price}[/TABLE]';[/PHP]
+
+Tags can be placed anywhere in the string.
+You can have as much text around the tags as needed and it will remain untouched.
+Be careful not to remove the single quotes around the [i]format[/i] variable as the script will not work without these
+If you want to use a single quote in the [i]format[/i] you must backslash it. For example var format='Fluffy\'s basket {itm_price}';
+If you wish to put a line break in the [i]format[/i] place a backslash n '\n' in the variable and it will be replaced by a line break.
+
+
+Next is the two variables that place text [i]before[/i] and [i]after[/i] the main body of the basket items.
+There is two 'tags' that will only work in these two variables
+{total} and {shipping}
+These only get replaced in the [I]before[/I] and [I]after[/I] variables and not the [I]format[/I] variable.
+
+By default if you don't have any of these variables in your script it will use a tabled format that works well here on boards, this is what the default three variables look like
+[PHP]var before = "[TABLE][B]Item[/B]|[B]Price[/B]";
+var format = '{itm_quantity}[URL="{itm_url}"]{itm_name}[/URL]|{itm_price}';
+var after = "Shipping|{shipping}\n[B]Total[/B]|[B]{total}[/B][/TABLE]";[/PHP]
+
+For those interested
+[url="http://fluffy88.com/scripts/basket_parser_dev.js"]Link to uncompressed JavaScript code[/url]
