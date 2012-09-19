@@ -1,5 +1,5 @@
 ﻿/**
- *	The will act as a very simple description of this script and how the tagging works.
+ *	This will act as a very simple description of this script and how the tagging works.
  *
  *	Tags available,
  *	- {itm_url}
