@@ -309,6 +309,28 @@ function computeruniverse() {
 	return basket;
 }
 
+function mindfactory() {
+	var basket = new Array();
+	
+/* 	var priceExShipping = parseFloat(hwvsFixPrice(jQuery('.pricecart:eq(0)').text().substring(1)), 10);
+	var priceIncShipping = parseFloat(hwvsFixPrice(jQuery('.pricecart:eq(1)').text().substring(1)), 10);
+
+ 	costs.shipping = "€" + (priceIncShipping - priceExShipping).toFixed(2);
+	costs.total = "€" + priceIncShipping;
+	basket.push(replaceVars(costs, before));
+
+	jQuery('.text2[name!="add"]').parent().parent().each(function(index) {
+		item.itm_url = window.location.protocol + "//" + window.location.hostname + jQuery('a:eq(2)', this).attr('href');
+		item.itm_name = jQuery('a:eq(2)', this).text();
+		item.itm_price = jQuery('.lightgray_border', this).text().trim();
+		item.itm_quantity = formatQuantity(jQuery('.text2', this).val());
+		basket.push(replaceVars(item, format));
+	});
+
+ */	basket.push(replaceVars(costs, after));
+	return basket;
+}
+
 /**
  *
  * @param price Assumes it is a number, should not contain any currency symbols.
@@ -565,6 +587,21 @@ function init_script() {
 			var redirect = confirm("Would you like to be redirected to your basket?");
 			if (redirect) {
 				window.location.pathname = "en/cart.asp";
+			}
+		}
+	} else if (host.match(/mindfactory/i)) {
+		window.emptyBasket = function () {
+			jQuery('input[type="checkbox"]').each(function() {
+				jQuery(this).attr("checked", "true");
+			});
+			jQuery('.sprites_general .b_text + input').click();
+		};
+		if (path.match(/shopping_cart/i)) {
+			popoutTextarea(mindfactory().join("\n"));
+		} else {
+			var redirect = confirm("Would you like to be redirected to your basket?");
+			if (redirect) {
+				window.location.pathname = "shopping_cart.php";
 			}
 		}
 	} else {
