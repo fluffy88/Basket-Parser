@@ -312,22 +312,22 @@ function computeruniverse() {
 function mindfactory() {
 	var basket = new Array();
 	
-/* 	var priceExShipping = parseFloat(hwvsFixPrice(jQuery('.pricecart:eq(0)').text().substring(1)), 10);
-	var priceIncShipping = parseFloat(hwvsFixPrice(jQuery('.pricecart:eq(1)').text().substring(1)), 10);
-
- 	costs.shipping = "€" + (priceIncShipping - priceExShipping).toFixed(2);
-	costs.total = "€" + priceIncShipping;
+ 	costs.shipping = 29.99;
+	costs.price = hwvsFixPrice(jQuery('.colorblue.size12.bold').text().trim().substring(2));
+	costs.vat = hwvsFixPrice(jQuery('.colorblue.size12.bold').closest('.floatRight').find('.colorgrey.size9').text().trim().substring(2));
+	costs.total = "€" + (costs.shipping + parseInt(costs.vat) + parseInt(costs.price));
+ 	costs.shipping = "€" + costs.shipping;
 	basket.push(replaceVars(costs, before));
 
-	jQuery('.text2[name!="add"]').parent().parent().each(function(index) {
-		item.itm_url = window.location.protocol + "//" + window.location.hostname + jQuery('a:eq(2)', this).attr('href');
-		item.itm_name = jQuery('a:eq(2)', this).text();
-		item.itm_price = jQuery('.lightgray_border', this).text().trim();
-		item.itm_quantity = formatQuantity(jQuery('.text2', this).val());
+ 	jQuery('.floatLeft.width760.bordergreybottom.patb10.cart_art').each(function(index) {
+		item.itm_url = jQuery('a:eq(0)', this).attr('href');
+		item.itm_name = jQuery('a:eq(0)', this).attr('title');
+		item.itm_price = "€" + hwvsFixPrice(jQuery('.size12.bold.pab15', this).text().replace(/\*/, "").substring(2));
+		item.itm_quantity = formatQuantity(jQuery('.size12.inputborder', this).val());
 		basket.push(replaceVars(item, format));
 	});
 
- */	basket.push(replaceVars(costs, after));
+	basket.push(replaceVars(costs, after));
 	return basket;
 }
 
