@@ -22,19 +22,12 @@ function hwvs() {
 			}
 			item.itm_name = $("a", itemInfo).text().trim();
 			item.itm_url = "http://" + window.location.hostname + "/" + $("a", itemInfo).attr("href");
-			basket.push(replaceVars(item, format));
+			basket.push(item);
 		}
 	} else {
 		alert("You must place an item in your basket first.");
 	}
 	return basket;
-}
-
-function replaceVars(elems, string) {
-	for (key in elems) {
-		string = string.replace("{" + key + "}", elems[key]);
-	}
-	return string;
 }
 
 function hwvsFixPrice(price) {
