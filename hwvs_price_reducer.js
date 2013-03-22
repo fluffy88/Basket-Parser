@@ -1,10 +1,10 @@
 /** script to reduce the cost of items in your hwvs basket using http://geizhals.de/ */
 
 
-	var items = hwvs();
-	for (var i=0; i<items.length; i++) {
-		alert(items[i].itm_name);
-	}
+var items = hwvs();
+for (var i=0; i<items.length; i++) {
+	alert(items[i].itm_name);
+}
 
 
 function hwvs() {
@@ -22,9 +22,6 @@ function hwvs() {
 			}
 			item.itm_name = $("a", itemInfo).text().trim();
 			item.itm_url = "http://" + window.location.hostname + "/" + $("a", itemInfo).attr("href");
-			item.itm_price = $(tableRows[i].cells[4]).text().trim();
-			item.itm_quantity = formatQuantity($("input:eq(0)", tableRows[i].cells[3]).val());
-			item.itm_price = "€" + hwvsFixPrice(item.itm_price.substring(0, item.itm_price.length - 2));
 			basket.push(replaceVars(item, format));
 		}
 	} else {
