@@ -3,7 +3,7 @@
 function init_script() {
 	var items = hwvs();
 	for (var i=0; i<items.length; i++) {
-		window.open("http://geizhals.de/?fs=" + items[i].itm_name);
+		window.open("http://geizhals.de/?fs=" + encodeURIComponent(items[i].itm_name));
 	}
 }
 
