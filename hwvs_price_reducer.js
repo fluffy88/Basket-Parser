@@ -1,5 +1,7 @@
 /** script to reduce the cost of items in your hwvs basket using http://geizhals.de/ */
 
+var item = new Object();
+
 function init_script() {
 	var items = hwvs();
 	for (var i=0; i<items.length; i++) {
@@ -12,7 +14,6 @@ function hwvs() {
 	if (typeof (basketTable) != "undefined") {
 		var tableBody = basketTable.getElementsByTagName("tbody")[0];
 		var tableRows = tableBody.rows;
-		var item = new Object();
 		var basket = new Array();
 
 		for (var i = 1; i < tableRows.length; i++) {
