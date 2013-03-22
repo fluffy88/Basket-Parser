@@ -2,9 +2,10 @@ JavaScript:
 	var debug = true;
 
 	function loadScript(url) {
-		if (document.getElementById("basket_parser") == null) {
+		var scriptID = url.match(/.*\/(.*)\./)[1];
+		if (document.getElementById(scriptID) == null) {
 			var script = document.createElement("script");
-			script.setAttribute("id", "basket_parser");
+			script.setAttribute("id", scriptID);
 			script.setAttribute("type", "text/javascript");
 			script.setAttribute("src", url + "?" + Math.pow(new Date().getMonth(), 2) + Math.pow(new Date().getDate(), 3));
 			document.getElementsByTagName("head")[0].appendChild(script);
@@ -24,5 +25,6 @@ JavaScript:
 	}
 
 	loadScript("http://fluffy88.com/scripts/basket_parser_dev.js");
+	/* loadScript("https://raw.github.com/fluffy88/Basket-Parser/master/hwvs_price_reducer.js"); */
 	/* loadScript("http://fluffy88.com/scripts/basket_parser.js"); */
 	void(0);
