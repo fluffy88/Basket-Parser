@@ -11,7 +11,13 @@ JavaScript:
 			document.getElementsByTagName("head")[0].appendChild(script);
 			setTimeout("loadScript('" + url + "')", 200);
 		} else if (typeof(init_script) != 'undefined') {
-			init_script();
+			try {
+				init_script();
+			} catch (e) {
+				if (debug) {
+					alert(e);
+				}
+			}
 		} else {
 			setTimeout("loadScript('" + url + "')", 200);
 		}
