@@ -1,4 +1,4 @@
-﻿/**
+/**
  *	This will act as a very simple description of this script and how the tagging works.
  *
  *	Tags available,
@@ -359,6 +359,20 @@ function hideBuildBox() {
 	return false;
 }
 
+function getPageWidth() {
+	var body = document.body;
+	var html = document.documentElement;
+
+	return Math.max(body.scrollWidth, body.offsetWidth, html.clientWidth, html.scrollWidth, html.offsetWidth);
+}
+
+function getPageHeight() {
+	var body = document.body;
+	var html = document.documentElement;
+
+	return Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+}
+
 function popoutTextarea(text) {
 	window.document.onkeydown = function (e) {
 		if (e.keyCode == 27) {
@@ -377,14 +391,14 @@ function popoutTextarea(text) {
 		var darkDiv = document.createElement("div");
 		darkDiv.setAttribute("id", "darkDiv");
 		darkDiv.setAttribute("onclick", "hideBuildBox()");
-		darkDiv.setAttribute("style", "top: 0px; left: 0px; background: #000000; position: absolute; z-index: 998; width: 100%; height: 100%; opacity: 0.5;");
+		darkDiv.setAttribute("style", "top: 0px; left: 0px; background: #000000; position: absolute; z-index: 998; width: " + getPageWidth() + "px; height: " + getPageHeight() + "px; opacity: 0.5;");
 
 		var build_info_div = document.createElement("div");
 		build_info_div.setAttribute("id", "build_info");
 		var div_style = "position: absolute;";
 		div_style += "z-index: 999;";
-		div_style += "top: " + (screen.availHeight / 2 - divHeight) + "px;";
-		div_style += "left: " + (screen.availWidth / 2 - divWidth / 2) + "px;";
+		div_style += "top: " + (window.innerHeight / 2 - divHeight / 2) + "px;";
+		div_style += "left: " + (window.innerWidth / 2 - divWidth / 2) + "px;";
 		div_style += "height: " + divHeight + "px;";
 		div_style += "width: " + divWidth + "px;";
 		div_style += "background: #f4a223;";
@@ -402,7 +416,7 @@ function popoutTextarea(text) {
 		var build_info_close = document.createElement("a");
 		build_info_close.setAttribute("style", "cursor: pointer; float: right; margin: -20px auto;");
 		build_info_close.setAttribute("onclick", "return hideBuildBox();");
-		build_info_close.appendChild(document.createTextNode("close [x]"));
+		build_info_close.appendChild(document.createTextNode("Close [x]"));
 
 		var build_info_textarea = document.createElement("textarea");
 		build_info_textarea.setAttribute("id", "build_post");
@@ -420,7 +434,7 @@ function popoutTextarea(text) {
 		empty_basket.setAttribute("style", "cursor: pointer;");
 		var empty_basker_icon = document.createElement("img");
 		empty_basker_icon.setAttribute("src", "http://www.fluffy88.com/images/shopping-basket-icon.png");
-		empty_basker_icon.setAttribute("style", "-moz-transform: scaleY(-1); -webkit-transform: scaleY(-1); -o-transform: scaleY(-1); transform: scaleY(-1); filter: flipv;");
+		empty_basker_icon.setAttribute("style", "margin: 5px 5px -5px auto; -moz-transform: scaleY(-1); -webkit-transform: scaleY(-1); -o-transform: scaleY(-1); transform: scaleY(-1); filter: flipv;");
 		empty_basket.appendChild(empty_basker_icon);
 		empty_basket.appendChild(document.createTextNode("Empty Bastet"));
 
