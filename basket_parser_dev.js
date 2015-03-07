@@ -391,12 +391,12 @@ function popoutTextarea(text) {
 		var darkDiv = document.createElement("div");
 		darkDiv.setAttribute("id", "darkDiv");
 		darkDiv.setAttribute("onclick", "hideBuildBox()");
-		darkDiv.setAttribute("style", "top: 0px; left: 0px; background: #000000; position: absolute; z-index: 998; width: " + getPageWidth() + "px; height: " + getPageHeight() + "px; opacity: 0.5;");
+		darkDiv.setAttribute("style", "top: 0px; left: 0px; background: #000000; position: absolute; z-index: 2014; width: " + getPageWidth() + "px; height: " + getPageHeight() + "px; opacity: 0.5;");
 
 		var build_info_div = document.createElement("div");
 		build_info_div.setAttribute("id", "build_info");
 		var div_style = "position: absolute;";
-		div_style += "z-index: 999;";
+		div_style += "z-index: 2015;";
 		div_style += "top: " + (window.innerHeight / 2 - divHeight / 2) + "px;";
 		div_style += "left: " + (window.innerWidth / 2 - divWidth / 2) + "px;";
 		div_style += "height: " + divHeight + "px;";
