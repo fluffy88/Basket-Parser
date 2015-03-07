@@ -1,5 +1,5 @@
 JavaScript:
-	var debug = true;
+	var debug = false;
 
 	function loadScript(url) {
 		var scriptID = url.match(/.*\/(.*)\./)[1];
