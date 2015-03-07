@@ -30,7 +30,5 @@ JavaScript:
 		}
 	}
 
-	loadScript("http://fluffy88.com/scripts/basket_parser_dev.js");
-	/* loadScript("https://raw.github.com/fluffy88/Basket-Parser/master/hwvs_price_reducer.js"); */
-	/* loadScript("http://fluffy88.com/scripts/basket_parser.js"); */
+	loadScript("https://raw.githubusercontent.com/fluffy88/Basket-Parser/master/basket_parser.js");
 	void(0);
