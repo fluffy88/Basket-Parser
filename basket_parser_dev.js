@@ -121,15 +121,15 @@ function newegg() {
 function amazon() {
 	var basket = new Array();
 
-	costs.total = jQuery('div#cart-subtotal span').text().trim();
+	costs.total = jQuery('#sc-active-cart .sc-subtotal .sc-price').text().trim();
 	costs.shipping = "- ? -";
 	basket.push(replaceVars(costs, before));
 
-	jQuery('.cart-item[type="active"]').each(function (index) {
-		item.itm_price = jQuery(this).attr("price");
-		item.itm_url = jQuery('a', this).attr('href');
-		item.itm_name = jQuery('a:eq(0)', this).text();
-		item.itm_quantity = jQuery(this).attr("quantity");
+	jQuery('#sc-active-cart .sc-list-item-content').each(function (index) {
+		item.itm_price = jQuery('.sc-price', this).text();
+		item.itm_url = window.location.hostname + jQuery('.sc-item-product-image .sc-product-link', this).attr('href');
+		item.itm_name = jQuery('.sc-product-title', this).text();
+		item.itm_quantity = jQuery('.a-dropdown-prompt', this).text();
 		if (item.itm_quantity != "1") {
 			item.itm_price = item.itm_price.substring(0, 1) + (parseFloat(item.itm_price.substring(1), 10) * item.itm_quantity).toFixed(2);
 		}
@@ -623,3 +623,4 @@ function init_script() {
 		alert("Sorry this tool does not work with this website.");
 	}
 }
+
