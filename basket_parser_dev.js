@@ -435,7 +435,7 @@ function popoutTextarea(text) {
 		var empty_basker_icon = document.createElement("img");
 		empty_basker_icon.setAttribute("src", "http://www.findicons.com/icon/download/459008/basket_empty/32/png");
 		empty_basker_icon.setAttribute("align", "middle");
-		empty_basker_icon.setAttribute("style", "margin: 5px 5px -5px auto; -moz-transform: scaleY(-1); -webkit-transform: scaleY(-1); -o-transform: scaleY(-1); transform: scaleY(-1); filter: flipv;");
+		empty_basker_icon.setAttribute("style", "-moz-transform: scaleY(-1); -webkit-transform: scaleY(-1); -o-transform: scaleY(-1); transform: scaleY(-1); filter: flipv;");
 		empty_basket.appendChild(empty_basker_icon);
 		empty_basket.appendChild(document.createTextNode("Empty Bastet"));
 
