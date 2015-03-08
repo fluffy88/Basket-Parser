@@ -83,15 +83,15 @@ function hwvsFixPrice(price) {
 function scan() {
 	var basket = new Array();
 
-	costs.total = $('div.btRight').text();
-	costs.shipping = "£" + $('#ctl00_ContentPlaceHolder2_labelTotalCarriage').text();
+	costs.total = $('.Total').text();
+	costs.shipping = $('.Basket-SubTotal > .Sub2 > li:eq(1)').text();
 	basket.push(replaceVars(costs, before));
 
-	$('.btRow').each(function (index) {
-		item.itm_url = $('.btDesc a', this).attr('href');
-		item.itm_name = $('.btDesc a', this).text().trim();
-		item.itm_price = $('.btInc', this).text().trim();
-		item.itm_quantity = formatQuantity($('.btQty input', this).val());
+	$('.basket-prod-table > tbody > tr').each(function (index) {
+		item.itm_url = $('.description > a', this).attr('href');
+		item.itm_name = $('.description > a', this).text().trim();
+		item.itm_price = $('.inc-vat', this).text().trim();
+		item.itm_quantity = formatQuantity($('.qty > input', this).val());
 		basket.push(replaceVars(item, format));
 	});
 
