@@ -30,5 +30,5 @@ JavaScript:
 		}
 	}
 
-	loadScript("https://raw.githubusercontent.com/fluffy88/Basket-Parser/master/basket_parser.js");
+	loadScript("https://fluffy88.github.io/Basket-Parser/basket_parser.js");
 	void(0);
